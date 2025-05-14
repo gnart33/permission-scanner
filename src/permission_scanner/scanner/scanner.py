@@ -306,11 +306,6 @@ class ContractScanner:
         """
         final_scan_result = {}
         contract_metadata = self.block_explorer.get_contract_metadata(self.address)
-        with open(
-            f"{self.export_dir}/{self.project_name}-contracts/contract_metadata.json",
-            "w",
-        ) as f:
-            json.dump(contract_metadata, f)
         contract_name = contract_metadata["ContractName"]
         isProxy = contract_metadata["Proxy"] == 1
 

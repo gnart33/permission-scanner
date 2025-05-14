@@ -7,7 +7,7 @@ src/__pycache__
 /permissions.json
 results/
 # markdown generation outputs
-*.md
+
 
 .venv
 logs
