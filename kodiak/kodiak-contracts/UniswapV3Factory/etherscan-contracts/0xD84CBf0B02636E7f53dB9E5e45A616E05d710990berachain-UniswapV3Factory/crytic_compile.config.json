@@ -1,0 +1,1 @@
+{"solc_remaps": ["forge-std/=lib/forge-std/src/", "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/"], "solc_solcs_select": "0.7.6", "solc_args": "--optimize --optimize-runs 100 --evm-version istanbul"}

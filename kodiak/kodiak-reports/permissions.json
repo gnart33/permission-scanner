@@ -1,0 +1,4040 @@
+{
+    "UniswapV3Factory": {
+        "UniswapV3Factory": {},
+        "Address": "0xD84CBf0B02636E7f53dB9E5e45A616E05d710990",
+        "permissions": {
+            "Contract_Name": "UniswapV3Factory",
+            "Functions": [
+                {
+                    "Function": "setOwner",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool)(msg.sender == owner)"
+                    ],
+                    "state_variables_read": [
+                        "owner"
+                    ],
+                    "state_variables_written": [
+                        "owner"
+                    ],
+                    "owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setDefaultFeeProtocol",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool)(msg.sender == owner)"
+                    ],
+                    "state_variables_read": [
+                        "owner"
+                    ],
+                    "state_variables_written": [
+                        "defaultFeeProtocol"
+                    ],
+                    "owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "enableFeeAmount",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool)(msg.sender == owner)"
+                    ],
+                    "state_variables_read": [
+                        "owner",
+                        "feeAmountTickSpacing"
+                    ],
+                    "state_variables_written": [
+                        "feeAmountTickSpacing"
+                    ],
+                    "owner": "0x0000000000000000000000000000000000000000",
+                    "feeAmountTickSpacing": 0
+                }
+            ]
+        },
+        "storage_values": {
+            "owner": "0x0000000000000000000000000000000000000000",
+            "feeAmountTickSpacing": 0
+        }
+    },
+    "UniswapV2Factory": {
+        "UniswapV2Factory": {},
+        "Address": "0x5e705e184d233ff2a7cb1553793464a9d0c3028f",
+        "permissions": {
+            "Contract_Name": "UniswapV2Factory",
+            "Functions": [
+                {
+                    "Function": "setFeeTo",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == feeToSetter,UniswapV2: FORBIDDEN)"
+                    ],
+                    "state_variables_read": [
+                        "feeToSetter"
+                    ],
+                    "state_variables_written": [
+                        "feeTo"
+                    ],
+                    "feeToSetter": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setFeeToSetter",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == feeToSetter,UniswapV2: FORBIDDEN)"
+                    ],
+                    "state_variables_read": [
+                        "feeToSetter"
+                    ],
+                    "state_variables_written": [
+                        "feeToSetter"
+                    ],
+                    "feeToSetter": "0x0000000000000000000000000000000000000000"
+                }
+            ]
+        },
+        "storage_values": {
+            "feeToSetter": "0x0000000000000000000000000000000000000000"
+        }
+    },
+    "SwapRouter": {
+        "SwapRouter": {},
+        "Address": "0xEd158C4b336A6FCb5B193A5570e3a571f6cbe690",
+        "permissions": {
+            "Contract_Name": "SwapRouter",
+            "Functions": [
+                {
+                    "Function": "selfPermitIfNecessary",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "IERC20(token).allowance(msg.sender,address(this)) < value"
+                    ],
+                    "state_variables_read": [],
+                    "state_variables_written": []
+                },
+                {
+                    "Function": "selfPermitAllowedIfNecessary",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "IERC20(token).allowance(msg.sender,address(this)) < type()(uint256).max"
+                    ],
+                    "state_variables_read": [],
+                    "state_variables_written": []
+                },
+                {
+                    "Function": "receive",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == WETH9,Not WETH9)"
+                    ],
+                    "state_variables_read": [
+                        "WETH9"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "WETH9"
+                        }
+                    ]
+                },
+                {
+                    "Function": "uniswapV3SwapCallback",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool)(msg.sender == address(pool))"
+                    ],
+                    "state_variables_read": [
+                        "ADDR_SIZE",
+                        "NEXT_OFFSET",
+                        "factory",
+                        "MULTIPLE_POOLS_MIN_LENGTH",
+                        "WETH9"
+                    ],
+                    "state_variables_written": [
+                        "amountInCached"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH9"
+                        }
+                    ]
+                },
+                {
+                    "Function": "exactInputSingle",
+                    "Modifiers": [
+                        "checkDeadline"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "ADDR_SIZE",
+                        "NEXT_OFFSET",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "exactInput",
+                    "Modifiers": [
+                        "checkDeadline"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "ADDR_SIZE",
+                        "NEXT_OFFSET",
+                        "factory",
+                        "MULTIPLE_POOLS_MIN_LENGTH",
+                        "POP_OFFSET",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "exactOutputSingle",
+                    "Modifiers": [
+                        "checkDeadline"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "ADDR_SIZE",
+                        "NEXT_OFFSET",
+                        "factory",
+                        "block.timestamp",
+                        "deadline",
+                        "DEFAULT_AMOUNT_IN_CACHED"
+                    ],
+                    "state_variables_written": [
+                        "amountInCached"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "DEFAULT_AMOUNT_IN_CACHED",
+                            "slot": "type()(uint256).max"
+                        }
+                    ]
+                },
+                {
+                    "Function": "exactOutput",
+                    "Modifiers": [
+                        "checkDeadline"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "ADDR_SIZE",
+                        "DEFAULT_AMOUNT_IN_CACHED",
+                        "NEXT_OFFSET",
+                        "factory",
+                        "amountInCached",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [
+                        "amountInCached"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "DEFAULT_AMOUNT_IN_CACHED",
+                            "slot": "type()(uint256).max"
+                        }
+                    ],
+                    "amountInCached": 0
+                }
+            ]
+        },
+        "storage_values": {
+            "amountInCached": 0
+        }
+    },
+    "SwapRouter02": {
+        "SwapRouter02": {},
+        "Address": "0xe301E48F77963D3F7DbD2a4796962Bd7f3867Fb4",
+        "permissions": {
+            "Contract_Name": "SwapRouter02",
+            "Functions": [
+                {
+                    "Function": "selfPermitIfNecessary",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "IERC20(token).allowance(msg.sender,address(this)) < value"
+                    ],
+                    "state_variables_read": [],
+                    "state_variables_written": []
+                },
+                {
+                    "Function": "selfPermitAllowedIfNecessary",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "IERC20(token).allowance(msg.sender,address(this)) < type()(uint256).max"
+                    ],
+                    "state_variables_read": [],
+                    "state_variables_written": []
+                },
+                {
+                    "Function": "multicall",
+                    "Modifiers": [
+                        "checkDeadline"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": []
+                },
+                {
+                    "Function": "multicall",
+                    "Modifiers": [
+                        "checkPreviousBlockhash"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "previousBlockhash",
+                        "block.number"
+                    ],
+                    "state_variables_written": []
+                },
+                {
+                    "Function": "uniswapV3SwapCallback",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool)(msg.sender == address(pool))"
+                    ],
+                    "state_variables_read": [
+                        "ADDR_SIZE",
+                        "NEXT_OFFSET",
+                        "factory",
+                        "MULTIPLE_POOLS_MIN_LENGTH",
+                        "WETH9"
+                    ],
+                    "state_variables_written": [
+                        "amountInCached"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH9"
+                        }
+                    ]
+                },
+                {
+                    "Function": "receive",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == WETH9,Not WETH9)"
+                    ],
+                    "state_variables_read": [
+                        "WETH9"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "WETH9"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "UniswapV2Router02": {
+        "UniswapV2Router02": {},
+        "Address": "0xd91dd58387Ccd9B66B390ae2d7c66dBD46BC6022",
+        "permissions": {
+            "Contract_Name": "UniswapV2Router02",
+            "Functions": [
+                {
+                    "Function": "receive",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "assert(bool)(msg.sender == WETH)"
+                    ],
+                    "state_variables_read": [
+                        "WETH"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "addLiquidity",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "addLiquidityETH",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "removeLiquidity",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "removeLiquidityETH",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "removeLiquidityWithPermit",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "removeLiquidityETHWithPermit",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "removeLiquidityETHSupportingFeeOnTransferTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapExactTokensForTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapTokensForExactTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapExactETHForTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapTokensForExactETH",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapExactTokensForETH",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapETHForExactTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapExactTokensForTokensSupportingFeeOnTransferTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapExactETHForTokensSupportingFeeOnTransferTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                },
+                {
+                    "Function": "swapExactTokensForETHSupportingFeeOnTransferTokens",
+                    "Modifiers": [
+                        "ensure"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "WETH",
+                        "factory",
+                        "deadline",
+                        "block.timestamp"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        },
+                        {
+                            "name": "WETH"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "QuoterV2": {
+        "QuoterV2": {},
+        "Address": "0x644C8D6E501f7C994B74F5ceA96abe65d0BA662B",
+        "permissions": {
+            "Contract_Name": "QuoterV2",
+            "Functions": [
+                {
+                    "Function": "uniswapV3SwapCallback",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool)(msg.sender == address(pool))"
+                    ],
+                    "state_variables_read": [
+                        "NEXT_OFFSET",
+                        "ADDR_SIZE",
+                        "factory",
+                        "amountOutCached"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ],
+                    "amountOutCached": 0
+                }
+            ]
+        },
+        "storage_values": {
+            "amountOutCached": 0
+        }
+    },
+    "MixedRouteQuoterV1": {
+        "MixedRouteQuoterV1": {},
+        "Address": "0xfa0276F06161cC2f66Aa51f3500484EdF8Fc94bB",
+        "permissions": {
+            "Contract_Name": "MixedRouteQuoterV1",
+            "Functions": [
+                {
+                    "Function": "uniswapV3SwapCallback",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool)(msg.sender == address(pool))"
+                    ],
+                    "state_variables_read": [
+                        "NEXT_OFFSET",
+                        "ADDR_SIZE",
+                        "factory"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "factory"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "TickLens": {
+        "TickLens": {},
+        "Address": "0xa73C6F1FeC76D5487dC30bdB8f11d1F390394b48",
+        "permissions": {
+            "Contract_Name": "TickLens",
+            "Functions": []
+        }
+    },
+    "UniswapInterfaceMulticall": {
+        "UniswapInterfaceMulticall": {},
+        "Address": "0x89ff70257bc747F310bB538eeFC46aDD763e75d8",
+        "permissions": {
+            "Contract_Name": "UniswapInterfaceMulticall",
+            "Functions": []
+        }
+    },
+    "Multicall3": {
+        "Multicall3": {},
+        "Address": "0xcA11bde05977b3631167028862bE2a173976CA11",
+        "permissions": {
+            "Contract_Name": "Multicall3",
+            "Functions": []
+        }
+    },
+    "KodiakIslandFactory": {
+        "KodiakIslandFactory": {},
+        "Address": "0x5261c5A5f08818c08Ed0Eb036d9575bA1E02c1d6",
+        "permissions": {
+            "Contract_Name": "KodiakIslandFactory",
+            "Functions": [
+                {
+                    "Function": "renounceOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "transferOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setIslandImplementation",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "islandImplementation"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setTreasury",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "treasury"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setIslandFee",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "islandFee"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                }
+            ]
+        },
+        "storage_values": {
+            "_owner": "0x0000000000000000000000000000000000000000"
+        }
+    },
+    "IslandRouter": {
+        "IslandRouter": {},
+        "Address": "0x679a7C63FC83b6A4D9C1F931891d705483d4791F",
+        "permissions": {
+            "Contract_Name": "IslandRouter",
+            "Functions": []
+        }
+    },
+    "KodiakIslandWithRouter": {
+        "KodiakIslandWithRouter": {},
+        "Address": "0xCFe9Ee61c271fBA4D190498b5A71B8CB365a3590",
+        "permissions": {
+            "Contract_Name": "KodiakIslandWithRouter",
+            "Functions": [
+                {
+                    "Function": "uniswapV3MintCallback",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == address(pool),callback caller)"
+                    ],
+                    "state_variables_read": [
+                        "token1",
+                        "pool",
+                        "token0"
+                    ],
+                    "state_variables_written": [],
+                    "pool": "0000000000000000000000000000000000000000",
+                    "token0": "0000000000000000000000000000000000000000",
+                    "token1": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "uniswapV3SwapCallback",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == address(pool),callback caller)"
+                    ],
+                    "state_variables_read": [
+                        "token1",
+                        "pool",
+                        "token0"
+                    ],
+                    "state_variables_written": [],
+                    "pool": "0000000000000000000000000000000000000000",
+                    "token0": "0000000000000000000000000000000000000000",
+                    "token1": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "mint",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(! restrictedMint || msg.sender == _manager || ! isManaged(),restricted)"
+                    ],
+                    "state_variables_read": [
+                        "managerFeeBPS",
+                        "INITIAL_MINT",
+                        "_BALANCE_SLOT_SEED",
+                        "_TOTAL_SUPPLY_SLOT",
+                        "managerBalance0",
+                        "MAX_TICK",
+                        "upperTick",
+                        "restrictedMint",
+                        "token1",
+                        "_manager",
+                        "token0",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "pool",
+                        "_TRANSFER_EVENT_SIGNATURE",
+                        "_paused",
+                        "this",
+                        "managerBalance1",
+                        "lowerTick"
+                    ],
+                    "state_variables_written": [
+                        "_REENTRANCY_GUARD_SLOT",
+                        "_TOTAL_SUPPLY_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_TRANSFER_EVENT_SIGNATURE",
+                            "slot": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_TOTAL_SUPPLY_SLOT",
+                            "slot": "0x05345cdf77eb68f44c",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_BALANCE_SLOT_SEED",
+                            "slot": "0x87a211a2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "INITIAL_MINT",
+                            "slot": "1e3",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000",
+                    "_paused": false,
+                    "restrictedMint": false,
+                    "lowerTick": 0,
+                    "upperTick": 0,
+                    "managerFeeBPS": 0,
+                    "managerBalance0": 0,
+                    "managerBalance1": 0,
+                    "pool": "0000000000000000000000000000000000000000",
+                    "token0": "0000000000000000000000000000000000000000",
+                    "token1": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "burn",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "managerFeeBPS",
+                        "_BALANCE_SLOT_SEED",
+                        "_TOTAL_SUPPLY_SLOT",
+                        "managerBalance0",
+                        "upperTick",
+                        "token1",
+                        "token0",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "pool",
+                        "_TRANSFER_EVENT_SIGNATURE",
+                        "_paused",
+                        "this",
+                        "managerBalance1",
+                        "lowerTick"
+                    ],
+                    "state_variables_written": [
+                        "managerBalance1",
+                        "_TOTAL_SUPPLY_SLOT",
+                        "managerBalance0",
+                        "_REENTRANCY_GUARD_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_TRANSFER_EVENT_SIGNATURE",
+                            "slot": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_TOTAL_SUPPLY_SLOT",
+                            "slot": "0x05345cdf77eb68f44c",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_BALANCE_SLOT_SEED",
+                            "slot": "0x87a211a2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_paused": false,
+                    "lowerTick": 0,
+                    "upperTick": 0,
+                    "managerFeeBPS": 0,
+                    "managerBalance0": 0,
+                    "managerBalance1": 0,
+                    "pool": "0000000000000000000000000000000000000000",
+                    "token0": "0000000000000000000000000000000000000000",
+                    "token1": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "executiveRebalance",
+                    "Modifiers": [
+                        "onlyManager",
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "managerFeeBPS",
+                        "_TOTAL_SUPPLY_SLOT",
+                        "managerBalance0",
+                        "_manager",
+                        "upperTick",
+                        "token1",
+                        "MAX_TICK",
+                        "token0",
+                        "pool",
+                        "_paused",
+                        "managerBalance1",
+                        "lowerTick",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "upperTick",
+                        "managerBalance0",
+                        "lowerTick",
+                        "managerBalance1"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_TOTAL_SUPPLY_SLOT",
+                            "slot": "0x05345cdf77eb68f44c",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000",
+                    "_paused": false,
+                    "lowerTick": 0,
+                    "upperTick": 0,
+                    "managerFeeBPS": 0,
+                    "managerBalance0": 0,
+                    "managerBalance1": 0,
+                    "pool": "0000000000000000000000000000000000000000",
+                    "token0": "0000000000000000000000000000000000000000",
+                    "token1": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "rebalance",
+                    "Modifiers": [
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "managerFeeBPS",
+                        "managerBalance0",
+                        "MAX_TICK",
+                        "upperTick",
+                        "token1",
+                        "token0",
+                        "pool",
+                        "_paused",
+                        "managerBalance1",
+                        "lowerTick"
+                    ],
+                    "state_variables_written": [
+                        "managerBalance1",
+                        "managerBalance0"
+                    ],
+                    "_paused": false,
+                    "lowerTick": 0,
+                    "upperTick": 0,
+                    "managerFeeBPS": 0,
+                    "managerBalance0": 0,
+                    "managerBalance1": 0,
+                    "pool": "0000000000000000000000000000000000000000",
+                    "token0": "0000000000000000000000000000000000000000",
+                    "token1": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "updateManagerParams",
+                    "Modifiers": [
+                        "onlyManager"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "managerFeeBPS",
+                        "managerTreasury",
+                        "_manager",
+                        "compounderSlippageBPS",
+                        "compounderSlippageInterval",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "managerFeeBPS",
+                        "managerTreasury",
+                        "compounderSlippageBPS",
+                        "compounderSlippageInterval"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000",
+                    "compounderSlippageBPS": 0,
+                    "compounderSlippageInterval": 0,
+                    "managerFeeBPS": 0,
+                    "managerTreasury": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setRestrictedMint",
+                    "Modifiers": [
+                        "onlyManager"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_manager"
+                    ],
+                    "state_variables_written": [
+                        "restrictedMint"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "pause",
+                    "Modifiers": [
+                        "onlyPauserOrAbove",
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(pauser[msg.sender] || msg.sender == _manager,Ownable: caller is not the pauser)",
+                        "require(bool,string)(pauser[msg.sender] || msg.sender == _manager,Ownable: caller is not the pauser)"
+                    ],
+                    "state_variables_read": [
+                        "pauser",
+                        "_paused",
+                        "msg.sender",
+                        "_manager"
+                    ],
+                    "state_variables_written": [
+                        "_paused"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000",
+                    "_paused": false,
+                    "pauser": false
+                },
+                {
+                    "Function": "unpause",
+                    "Modifiers": [
+                        "onlyManager",
+                        "whenPaused"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "_paused",
+                        "msg.sender",
+                        "_manager"
+                    ],
+                    "state_variables_written": [
+                        "_paused"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000",
+                    "_paused": false
+                },
+                {
+                    "Function": "setPauser",
+                    "Modifiers": [
+                        "onlyManager"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_manager"
+                    ],
+                    "state_variables_written": [
+                        "pauser"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "renounceOwnership",
+                    "Modifiers": [
+                        "onlyManager",
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "_paused",
+                        "msg.sender",
+                        "islandFactory",
+                        "_manager"
+                    ],
+                    "state_variables_written": [
+                        "managerBalance0",
+                        "managerBalance1",
+                        "managerFeeBPS",
+                        "_manager",
+                        "managerTreasury"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000",
+                    "_paused": false,
+                    "islandFactory": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "_pause",
+                    "Modifiers": [
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_paused"
+                    ],
+                    "state_variables_written": [
+                        "_paused"
+                    ],
+                    "_paused": false
+                },
+                {
+                    "Function": "_unpause",
+                    "Modifiers": [
+                        "whenPaused"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_paused"
+                    ],
+                    "state_variables_written": [
+                        "_paused"
+                    ],
+                    "_paused": false
+                },
+                {
+                    "Function": "transferOwnership",
+                    "Modifiers": [
+                        "onlyManager"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_manager"
+                    ],
+                    "state_variables_written": [
+                        "_manager"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "transferFrom",
+                    "Modifiers": [],
+                    "msg.sender_conditions": [
+                        "! caller()() == _PERMIT2"
+                    ],
+                    "state_variables_read": [
+                        "_ALLOWANCE_SLOT_SEED",
+                        "_BALANCE_SLOT_SEED",
+                        "_PERMIT2",
+                        "_TRANSFER_EVENT_SIGNATURE"
+                    ],
+                    "state_variables_written": [],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_TRANSFER_EVENT_SIGNATURE",
+                            "slot": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_BALANCE_SLOT_SEED",
+                            "slot": "0x87a211a2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ALLOWANCE_SLOT_SEED",
+                            "slot": "0x7f5e9f20",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_PERMIT2",
+                            "slot": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ]
+                },
+                {
+                    "Function": "setRouter",
+                    "Modifiers": [
+                        "onlyManager"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_manager"
+                    ],
+                    "state_variables_written": [
+                        "swapRouter"
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "executiveRebalanceWithRouter",
+                    "Modifiers": [
+                        "onlyManager",
+                        "whenNotPaused"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)",
+                        "require(bool,string)(msg.sender == _manager,Ownable: caller is not the manager)"
+                    ],
+                    "state_variables_read": [
+                        "swapRouter",
+                        "managerFeeBPS",
+                        "_TOTAL_SUPPLY_SLOT",
+                        "managerBalance0",
+                        "_manager",
+                        "upperTick",
+                        "token1",
+                        "MAX_TICK",
+                        "token0",
+                        "compounderSlippageBPS",
+                        "compounderSlippageInterval",
+                        "Q96",
+                        "pool",
+                        "_paused",
+                        "managerBalance1",
+                        "lowerTick",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "upperTick",
+                        "managerBalance0",
+                        "lowerTick",
+                        "managerBalance1"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_TOTAL_SUPPLY_SLOT",
+                            "slot": "0x05345cdf77eb68f44c",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "Q96",
+                            "slot": "1 << 96"
+                        }
+                    ],
+                    "_manager": "0x0000000000000000000000000000000000000000",
+                    "_paused": false,
+                    "lowerTick": 0,
+                    "upperTick": 0,
+                    "compounderSlippageBPS": 0,
+                    "compounderSlippageInterval": 0,
+                    "managerFeeBPS": 0,
+                    "managerBalance0": 0,
+                    "managerBalance1": 0,
+                    "pool": "0000000000000000000000000000000000000000",
+                    "token0": "0000000000000000000000000000000000000000",
+                    "token1": "0000000000000000000000000000000000000000",
+                    "swapRouter": false
+                }
+            ]
+        },
+        "storage_values": {
+            "_manager": "0x0000000000000000000000000000000000000000",
+            "_paused": false,
+            "restrictedMint": false,
+            "lowerTick": 0,
+            "upperTick": 0,
+            "compounderSlippageBPS": 0,
+            "compounderSlippageInterval": 0,
+            "managerFeeBPS": 0,
+            "managerTreasury": "0x0000000000000000000000000000000000000000",
+            "islandFactory": "0000000000000000000000000000000000000000",
+            "managerBalance0": 0,
+            "managerBalance1": 0,
+            "pool": "0000000000000000000000000000000000000000",
+            "token0": "0000000000000000000000000000000000000000",
+            "token1": "0000000000000000000000000000000000000000",
+            "pauser": false,
+            "swapRouter": false
+        }
+    },
+    "FarmFactory": {
+        "FarmFactory": {},
+        "Address": "0xAeAa563d9110f833FA3fb1FF9a35DFBa11B0c9cF",
+        "permissions": {
+            "Contract_Name": "FarmFactory",
+            "Functions": [
+                {
+                    "Function": "renounceOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "transferOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setXKdk",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "xkdk",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "xkdk"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "xkdk": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setAllowedImplementation",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "allowedImplementations",
+                        "msg.sender",
+                        "isImplementationAllowed",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "isImplementationAllowed",
+                        "allowedImplementations"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "isImplementationAllowed": false,
+                    "allowedImplementations": 0
+                }
+            ]
+        },
+        "storage_values": {
+            "_owner": "0x0000000000000000000000000000000000000000",
+            "isImplementationAllowed": false,
+            "allowedImplementations": 0,
+            "xkdk": "0000000000000000000000000000000000000000"
+        }
+    },
+    "KodiakFarm": {
+        "KodiakFarm": {},
+        "Address": "0xEB81a9EEAF156d4Cfec2AF364aF36Ad65cF9f0fa",
+        "permissions": {
+            "Contract_Name": "KodiakFarm",
+            "Functions": [
+                {
+                    "Function": "renounceOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "transferOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "initialize",
+                    "Modifiers": [
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "rewardTokens",
+                        "rewardTokenAddrToIdx",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "rewardsPerTokenStored",
+                        "_owner",
+                        "this",
+                        "stakingToken"
+                    ],
+                    "state_variables_written": [
+                        "rewardTokens",
+                        "rewardsPerTokenStored",
+                        "stakingTokenCap",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "stakingToken",
+                        "_owner",
+                        "lock_time_for_max_multiplier",
+                        "rewardsDuration",
+                        "rewardTokenAddrToIdx",
+                        "rewardRates",
+                        "lock_max_multiplier",
+                        "lock_time_min",
+                        "rewardManagers",
+                        "factory"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "rewardTokens": 0,
+                    "rewardTokenAddrToIdx": 0,
+                    "rewardsPerTokenStored": 0
+                },
+                {
+                    "Function": "startFarm",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "rewardRates",
+                        "rewardTokens",
+                        "msg.sender",
+                        "_owner",
+                        "rewardsDuration",
+                        "lastUpdateTime",
+                        "periodFinish"
+                    ],
+                    "state_variables_written": [
+                        "lastUpdateTime",
+                        "periodFinish"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0
+                },
+                {
+                    "Function": "stakeLocked",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "lock_time_for_max_multiplier",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "lock_time_min",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "stakingPaused",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "_locked_liquidity",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "lock_max_multiplier",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "stakingTokenCap",
+                        "liquidity",
+                        "greylist",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "_total_liquidity_locked",
+                        "lockedStakes",
+                        "rewardsPerTokenStored",
+                        "lastRewardClaimTime",
+                        "_combined_weights",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "_locked_liquidity",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight",
+                        "_REENTRANCY_GUARD_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "stakingTokenCap": 0,
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "lock_max_multiplier": 0,
+                    "lock_time_for_max_multiplier": 0,
+                    "lock_time_min": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_locked_liquidity": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "greylist": false,
+                    "stakingPaused": false
+                },
+                {
+                    "Function": "_stakeLocked",
+                    "Modifiers": [
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "lock_time_for_max_multiplier",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "lock_time_min",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "stakingPaused",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "_locked_liquidity",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "lock_max_multiplier",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "stakingTokenCap",
+                        "liquidity",
+                        "greylist",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "_total_liquidity_locked",
+                        "lockedStakes",
+                        "rewardsPerTokenStored",
+                        "_combined_weights",
+                        "lastRewardClaimTime",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "_locked_liquidity",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "stakingTokenCap": 0,
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "lock_max_multiplier": 0,
+                    "lock_time_for_max_multiplier": 0,
+                    "lock_time_min": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_locked_liquidity": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "greylist": false,
+                    "stakingPaused": false
+                },
+                {
+                    "Function": "withdrawLocked",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "rewardsCollectionPaused",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "stakesUnlocked",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "_locked_liquidity",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "liquidity",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "_total_liquidity_locked",
+                        "lockedStakes",
+                        "rewardsPerTokenStored",
+                        "_combined_weights",
+                        "lastRewardClaimTime",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "_locked_liquidity",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight",
+                        "_REENTRANCY_GUARD_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_locked_liquidity": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "stakesUnlocked": false,
+                    "rewardsCollectionPaused": false
+                },
+                {
+                    "Function": "withdrawLockedMultiple",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "rewardsCollectionPaused",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "stakesUnlocked",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "_locked_liquidity",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "liquidity",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "_total_liquidity_locked",
+                        "lockedStakes",
+                        "rewardsPerTokenStored",
+                        "lastRewardClaimTime",
+                        "_combined_weights",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "_locked_liquidity",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight",
+                        "_REENTRANCY_GUARD_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_locked_liquidity": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "stakesUnlocked": false,
+                    "rewardsCollectionPaused": false
+                },
+                {
+                    "Function": "withdrawLockedAll",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "rewardsCollectionPaused",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "stakesUnlocked",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "_locked_liquidity",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "liquidity",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "_total_liquidity_locked",
+                        "lockedStakes",
+                        "rewardsPerTokenStored",
+                        "lastRewardClaimTime",
+                        "_combined_weights",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "_locked_liquidity",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight",
+                        "_REENTRANCY_GUARD_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_locked_liquidity": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "stakesUnlocked": false,
+                    "rewardsCollectionPaused": false
+                },
+                {
+                    "Function": "emergencyWithdraw",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "rewardsCollectionPaused",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "stakesUnlocked",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "_locked_liquidity",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "liquidity",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "_total_liquidity_locked",
+                        "lockedStakes",
+                        "rewardsPerTokenStored",
+                        "_combined_weights",
+                        "lastRewardClaimTime",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "_locked_liquidity",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight",
+                        "_REENTRANCY_GUARD_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_locked_liquidity": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "stakesUnlocked": false,
+                    "rewardsCollectionPaused": false
+                },
+                {
+                    "Function": "_withdrawLocked",
+                    "Modifiers": [
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "rewardsCollectionPaused",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "stakesUnlocked",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "_locked_liquidity",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "liquidity",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "_total_liquidity_locked",
+                        "lockedStakes",
+                        "rewardsPerTokenStored",
+                        "_combined_weights",
+                        "lastRewardClaimTime",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "_locked_liquidity",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_locked_liquidity": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "stakesUnlocked": false,
+                    "rewardsCollectionPaused": false
+                },
+                {
+                    "Function": "getReward",
+                    "Modifiers": [
+                        "nonReentrant",
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "rewardsCollectionPaused",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "_REENTRANCY_GUARD_SLOT",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "liquidity",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "rewardsPerTokenStored",
+                        "lastRewardClaimTime",
+                        "_combined_weights",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight",
+                        "_REENTRANCY_GUARD_SLOT"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_REENTRANCY_GUARD_SLOT",
+                            "slot": "0x929eee149b4bd21268",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "rewardsCollectionPaused": false
+                },
+                {
+                    "Function": "_getReward",
+                    "Modifiers": [
+                        "updateRewardAndBalance"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "earned_arr",
+                        "rewardsDuration",
+                        "rewardsCollectionPaused",
+                        "MULTIPLIER_PRECISION",
+                        "thisStake",
+                        "time_before_expiry",
+                        "numerator",
+                        "num_periods_elapsed",
+                        "sync_too",
+                        "newRewardsPerTokenStored",
+                        "this",
+                        "block.timestamp",
+                        "periodFinish",
+                        "combined_boosted_amount",
+                        "SafeMath",
+                        "accrue_start_time",
+                        "old_combined_weight",
+                        "new_combined_weight",
+                        "time_sum",
+                        "Math",
+                        "weight_diff_scope_0",
+                        "weight_diff",
+                        "rewardRates",
+                        "rewardTokens",
+                        "_total_liquidity_locked",
+                        "userRewardsPerTokenPaid",
+                        "time_after_expiry",
+                        "i",
+                        "rewards",
+                        "lock_multiplier",
+                        "b",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "rewards_per_token",
+                        "i_scope_0",
+                        "_total_combined_weight",
+                        "new_earned",
+                        "account",
+                        "a",
+                        "liquidity",
+                        "_combined_weights",
+                        "reward_arr",
+                        "lockedStakes",
+                        "stakingToken",
+                        "lastRewardClaimTime",
+                        "haveTokensToRenew"
+                    ],
+                    "state_variables_written": [
+                        "rewardsPerTokenStored",
+                        "lastRewardClaimTime",
+                        "_combined_weights",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "rewards",
+                        "rewardRates",
+                        "userRewardsPerTokenPaid",
+                        "_total_combined_weight"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "MULTIPLIER_PRECISION",
+                            "slot": "1e18",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "userRewardsPerTokenPaid": 0,
+                    "rewards": 0,
+                    "lastRewardClaimTime": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0,
+                    "_combined_weights": 0,
+                    "lockedStakes": 0,
+                    "rewardsCollectionPaused": false
+                },
+                {
+                    "Function": "recoverERC20",
+                    "Modifiers": [
+                        "onlyTknMgrs"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == owner() || isTokenManagerFor(msg.sender,reward_token_address),Farm: Not owner or tkn mgr)",
+                        "isRewardToken && rewardManagers[tokenAddress] == msg.sender",
+                        "! isRewardToken && (msg.sender == owner())",
+                        "require(bool,string)(msg.sender == owner() || isTokenManagerFor(msg.sender,reward_token_address),Farm: Not owner or tkn mgr)"
+                    ],
+                    "state_variables_read": [
+                        "rewardTokens",
+                        "rewardManagers",
+                        "reward_token_addr",
+                        "caller_addr",
+                        "rewardTokenAddrToIdx",
+                        "reward_token_address",
+                        "_owner",
+                        "stakingToken",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "rewardRates"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "rewardManagers": 0,
+                    "rewardTokens": 0,
+                    "rewardTokenAddrToIdx": 0
+                },
+                {
+                    "Function": "setRewardsDuration",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "periodFinish",
+                        "msg.sender",
+                        "rewardsDuration",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "rewardsDuration"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "rewardsDuration": 0
+                },
+                {
+                    "Function": "setMultipliers",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "lock_max_multiplier",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "lock_max_multiplier"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "lock_max_multiplier": 0
+                },
+                {
+                    "Function": "setLockedStakeTimeForMinAndMaxMultiplier",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "lock_time_for_max_multiplier",
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "lock_time_min",
+                        "lock_time_for_max_multiplier"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "lock_time_for_max_multiplier": 0
+                },
+                {
+                    "Function": "setGreylist",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "greylist"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setStakesUnlocked",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "stakesUnlocked"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setStakingPaused",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "stakingPaused"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setRewardsCollectionPaused",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "rewardsCollectionPaused"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setRewardRate",
+                    "Modifiers": [
+                        "onlyTknMgrs"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == owner() || isTokenManagerFor(msg.sender,reward_token_address),Farm: Not owner or tkn mgr)",
+                        "require(bool,string)(msg.sender == owner() || isTokenManagerFor(msg.sender,reward_token_address),Farm: Not owner or tkn mgr)"
+                    ],
+                    "state_variables_read": [
+                        "_total_liquidity_locked",
+                        "rewardTokens",
+                        "rewardManagers",
+                        "reward_token_addr",
+                        "caller_addr",
+                        "rewardTokenAddrToIdx",
+                        "_total_combined_weight",
+                        "rewardRates",
+                        "reward_token_address",
+                        "periodFinish",
+                        "rewardsPerTokenStored",
+                        "_owner",
+                        "stakingToken",
+                        "rewardsDuration",
+                        "lastUpdateTime",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "rewardRates",
+                        "rewardsPerTokenStored",
+                        "lastUpdateTime",
+                        "periodFinish"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardManagers": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardTokenAddrToIdx": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0
+                },
+                {
+                    "Function": "changeTokenManager",
+                    "Modifiers": [
+                        "onlyTknMgrs"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(msg.sender == owner() || isTokenManagerFor(msg.sender,reward_token_address),Farm: Not owner or tkn mgr)",
+                        "require(bool,string)(msg.sender == owner() || isTokenManagerFor(msg.sender,reward_token_address),Farm: Not owner or tkn mgr)"
+                    ],
+                    "state_variables_read": [
+                        "rewardManagers",
+                        "reward_token_addr",
+                        "caller_addr",
+                        "reward_token_address",
+                        "_owner",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "rewardManagers"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "rewardManagers": 0
+                },
+                {
+                    "Function": "addNewRewardToken",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_total_liquidity_locked",
+                        "rewardTokens",
+                        "_total_combined_weight",
+                        "rewardTokenAddrToIdx",
+                        "rewardRates",
+                        "periodFinish",
+                        "rewardsPerTokenStored",
+                        "_owner",
+                        "stakingToken",
+                        "rewardsDuration",
+                        "lastUpdateTime",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "rewardTokens",
+                        "rewardsPerTokenStored",
+                        "periodFinish",
+                        "lastUpdateTime",
+                        "rewardTokenAddrToIdx",
+                        "rewardRates",
+                        "rewardManagers"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "stakingToken": "0000000000000000000000000000000000000000",
+                    "periodFinish": 0,
+                    "lastUpdateTime": 0,
+                    "rewardTokens": 0,
+                    "rewardRates": 0,
+                    "rewardTokenAddrToIdx": 0,
+                    "rewardsDuration": 0,
+                    "rewardsPerTokenStored": 0,
+                    "_total_liquidity_locked": 0,
+                    "_total_combined_weight": 0
+                },
+                {
+                    "Function": "setStakingTokenCap",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "stakingTokenCap"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                }
+            ]
+        },
+        "storage_values": {
+            "_owner": "0x0000000000000000000000000000000000000000",
+            "stakingToken": "0000000000000000000000000000000000000000",
+            "stakingTokenCap": 0,
+            "periodFinish": 0,
+            "lastUpdateTime": 0,
+            "lock_max_multiplier": 0,
+            "lock_time_for_max_multiplier": 0,
+            "lock_time_min": 0,
+            "rewardManagers": 0,
+            "rewardTokens": 0,
+            "rewardRates": 0,
+            "rewardTokenAddrToIdx": 0,
+            "rewardsDuration": 0,
+            "rewardsPerTokenStored": 0,
+            "userRewardsPerTokenPaid": 0,
+            "rewards": 0,
+            "lastRewardClaimTime": 0,
+            "_total_liquidity_locked": 0,
+            "_total_combined_weight": 0,
+            "_locked_liquidity": 0,
+            "_combined_weights": 0,
+            "lockedStakes": 0,
+            "greylist": false,
+            "stakesUnlocked": false,
+            "rewardsCollectionPaused": false,
+            "stakingPaused": false
+        }
+    },
+    "XKodiakToken": {
+        "XKodiakToken": {},
+        "Address": "0xe8D7b965BA082835EA917F2B173Ff3E035B69eeB",
+        "permissions": {
+            "Contract_Name": "XKodiakToken",
+            "Functions": [
+                {
+                    "Function": "renounceOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "transferOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "getUserRedeem",
+                    "Modifiers": [
+                        "validateRedeem"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "userRedeems",
+                        "userAddress",
+                        "redeemIndex"
+                    ],
+                    "state_variables_written": [],
+                    "userRedeems": 0
+                },
+                {
+                    "Function": "setKdkAddress",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_totalSupply",
+                        "kdkToken",
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "kdkToken"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "mint",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_totalSupply",
+                        "_balances",
+                        "_transferWhitelist",
+                        "kdkToken",
+                        "_owner",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [
+                        "_totalSupply",
+                        "_balances"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "_balances": 0,
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "updateRedeemSettings",
+                    "Modifiers": [
+                        "kdkActive",
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "kdkToken",
+                        "msg.sender",
+                        "MAX_FIXED_RATIO",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "maxRedeemDuration",
+                        "minRedeemRatio",
+                        "minRedeemDuration",
+                        "redeemRewardsAdjustment",
+                        "maxRedeemRatio"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "MAX_FIXED_RATIO",
+                            "slot": "100",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "kdkToken": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "updateRewardsAddress",
+                    "Modifiers": [
+                        "kdkActive",
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "kdkToken",
+                        "msg.sender",
+                        "rewardsAddress",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "rewardsAddress",
+                        "redeemRewardsAdjustment"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "rewardsAddress": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "updateDeallocationFee",
+                    "Modifiers": [
+                        "kdkActive",
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "kdkToken",
+                        "msg.sender",
+                        "MAX_DEALLOCATION_FEE",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "usagesDeallocationFee"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "MAX_DEALLOCATION_FEE",
+                            "slot": "200",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "kdkToken": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "updateWhitelister",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_whitelisters",
+                        "_owner"
+                    ],
+                    "state_variables_written": [],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "_whitelisters": "0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "updateTransferWhitelist",
+                    "Modifiers": [
+                        "onlyWhiteLister"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(isWhitelister(msg.sender),onlyWhiteLister: not allowed)",
+                        "require(bool,string)(isWhitelister(msg.sender),onlyWhiteLister: not allowed)"
+                    ],
+                    "state_variables_read": [
+                        "EnumerableSet",
+                        "account",
+                        "_whitelisters",
+                        "_transferWhitelist",
+                        "value",
+                        "set",
+                        "_owner",
+                        "msg.sender"
+                    ],
+                    "state_variables_written": [],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "_whitelisters": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setBurnAddress",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "burnAddress"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "approveUsage",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_status",
+                        "usageApprovals"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "convert",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "_totalSupply",
+                        "_balances",
+                        "_transferWhitelist",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_totalSupply",
+                        "_balances",
+                        "_status"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "convertTo",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [
+                        "require(bool,string)(address(msg.sender).isContract(),convertTo: not allowed)"
+                    ],
+                    "state_variables_read": [
+                        "_status",
+                        "_totalSupply",
+                        "_balances",
+                        "_transferWhitelist",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_totalSupply",
+                        "_balances",
+                        "_status"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "redeem",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "redeemRewardsAdjustment",
+                        "_status",
+                        "_totalSupply",
+                        "maxRedeemDuration",
+                        "minRedeemRatio",
+                        "_balances",
+                        "minRedeemDuration",
+                        "rewardsAddress",
+                        "maxRedeemRatio",
+                        "_transferWhitelist",
+                        "xKodiakBalances",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "userRedeems",
+                        "burnAddress",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_totalSupply",
+                        "xKodiakBalances",
+                        "_balances",
+                        "_status",
+                        "userRedeems"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "rewardsAddress": "0000000000000000000000000000000000000000",
+                    "burnAddress": "0x0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "minRedeemRatio": 0,
+                    "maxRedeemRatio": 0,
+                    "minRedeemDuration": 0,
+                    "maxRedeemDuration": 0,
+                    "redeemRewardsAdjustment": 0,
+                    "xKodiakBalances": 0,
+                    "userRedeems": 0
+                },
+                {
+                    "Function": "finalizeRedeem",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant",
+                        "validateRedeem"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "userAddress",
+                        "_totalSupply",
+                        "_balances",
+                        "redeemIndex",
+                        "_transferWhitelist",
+                        "xKodiakBalances",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "userRedeems",
+                        "burnAddress",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_totalSupply",
+                        "xKodiakBalances",
+                        "userRedeems",
+                        "_status",
+                        "_balances"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "burnAddress": "0x0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "xKodiakBalances": 0,
+                    "userRedeems": 0
+                },
+                {
+                    "Function": "updateRedeemRewardsAddress",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant",
+                        "validateRedeem"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "userAddress",
+                        "redeemIndex",
+                        "rewardsAddress",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "userRedeems",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_status",
+                        "userRedeems"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "rewardsAddress": "0000000000000000000000000000000000000000",
+                    "userRedeems": 0
+                },
+                {
+                    "Function": "cancelRedeem",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant",
+                        "validateRedeem"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "userAddress",
+                        "_balances",
+                        "redeemIndex",
+                        "_transferWhitelist",
+                        "xKodiakBalances",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "userRedeems",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "xKodiakBalances",
+                        "_status",
+                        "userRedeems",
+                        "_balances"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "xKodiakBalances": 0,
+                    "userRedeems": 0
+                },
+                {
+                    "Function": "allocate",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "_balances",
+                        "usageApprovals",
+                        "_transferWhitelist",
+                        "usageAllocations",
+                        "xKodiakBalances",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_status",
+                        "xKodiakBalances",
+                        "_balances",
+                        "usageAllocations",
+                        "usageApprovals"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "usageApprovals": 0,
+                    "usageAllocations": 0,
+                    "xKodiakBalances": 0
+                },
+                {
+                    "Function": "allocateFromUsage",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "_balances",
+                        "usageApprovals",
+                        "_transferWhitelist",
+                        "usageAllocations",
+                        "xKodiakBalances",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_status",
+                        "xKodiakBalances",
+                        "_balances",
+                        "usageAllocations",
+                        "usageApprovals"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "usageApprovals": 0,
+                    "usageAllocations": 0,
+                    "xKodiakBalances": 0
+                },
+                {
+                    "Function": "deallocate",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "_totalSupply",
+                        "_balances",
+                        "_transferWhitelist",
+                        "usageAllocations",
+                        "xKodiakBalances",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "usagesDeallocationFee",
+                        "burnAddress",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_totalSupply",
+                        "_status",
+                        "xKodiakBalances",
+                        "usageAllocations",
+                        "_balances"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "burnAddress": "0x0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "usageAllocations": 0,
+                    "usagesDeallocationFee": 0,
+                    "xKodiakBalances": 0
+                },
+                {
+                    "Function": "deallocateFromUsage",
+                    "Modifiers": [
+                        "kdkActive",
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "_totalSupply",
+                        "_balances",
+                        "_transferWhitelist",
+                        "usageAllocations",
+                        "xKodiakBalances",
+                        "kdkToken",
+                        "_NOT_ENTERED",
+                        "usagesDeallocationFee",
+                        "burnAddress",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "_totalSupply",
+                        "_status",
+                        "xKodiakBalances",
+                        "usageAllocations",
+                        "_balances"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2",
+                            "value": "0x0000000000000000000000000000000000000000"
+                        }
+                    ],
+                    "_status": 0,
+                    "_balances": 0,
+                    "_totalSupply": 0,
+                    "kdkToken": "0000000000000000000000000000000000000000",
+                    "burnAddress": "0x0000000000000000000000000000000000000000",
+                    "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "usageAllocations": 0,
+                    "usagesDeallocationFee": 0,
+                    "xKodiakBalances": 0
+                }
+            ]
+        },
+        "storage_values": {
+            "_owner": "0x0000000000000000000000000000000000000000",
+            "_status": 0,
+            "_balances": 0,
+            "_totalSupply": 0,
+            "kdkToken": "0000000000000000000000000000000000000000",
+            "rewardsAddress": "0000000000000000000000000000000000000000",
+            "burnAddress": "0x0000000000000000000000000000000000000000",
+            "_whitelisters": "0000000000000000000000000000000000000000000000000000000000000000",
+            "_transferWhitelist": "0000000000000000000000000000000000000000000000000000000000000000",
+            "usageApprovals": 0,
+            "usageAllocations": 0,
+            "usagesDeallocationFee": 0,
+            "minRedeemRatio": 0,
+            "maxRedeemRatio": 0,
+            "minRedeemDuration": 0,
+            "maxRedeemDuration": 0,
+            "redeemRewardsAdjustment": 0,
+            "xKodiakBalances": 0,
+            "userRedeems": 0
+        }
+    },
+    "PandaFactory": {
+        "PandaFactory": {},
+        "Address": "0xac335fe675699b0ce4c927bdaa572eb647ed9f02",
+        "permissions": {
+            "Contract_Name": "PandaFactory",
+            "Functions": [
+                {
+                    "Function": "renounceOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "transferOwnership",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "_owner"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "deployPandaToken",
+                    "Modifiers": [
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "TOKEN_SUPPLY",
+                        "MAX_TOKENSINPOOL_SHARE",
+                        "MAX_SQRTP_MULTIPLE",
+                        "allPools",
+                        "MIN_TOKENSINPOOL_SHARE",
+                        "MIN_SQRTP_MULTIPLE",
+                        "DEPLOYER_MAX_BPS",
+                        "_NOT_ENTERED",
+                        "poolFees",
+                        "deployerNonce",
+                        "isImplementationAllowed",
+                        "minTradeSize",
+                        "minRaise",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "allPools",
+                        "deployerNonce",
+                        "_status",
+                        "poolToImplementation"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2"
+                        },
+                        {
+                            "name": "MIN_TOKENSINPOOL_SHARE",
+                            "slot": "5000"
+                        },
+                        {
+                            "name": "MAX_TOKENSINPOOL_SHARE",
+                            "slot": "9000"
+                        },
+                        {
+                            "name": "MIN_SQRTP_MULTIPLE",
+                            "slot": "11_000"
+                        },
+                        {
+                            "name": "MAX_SQRTP_MULTIPLE",
+                            "slot": "10 * 10_000"
+                        },
+                        {
+                            "name": "TOKEN_SUPPLY",
+                            "slot": "1_000_000_000 * 1e18"
+                        },
+                        {
+                            "name": "DEPLOYER_MAX_BPS",
+                            "slot": "5000"
+                        }
+                    ],
+                    "_status": 0,
+                    "poolFees": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "minRaise": 0,
+                    "minTradeSize": 0,
+                    "isImplementationAllowed": false,
+                    "deployerNonce": 0,
+                    "allPools": 0
+                },
+                {
+                    "Function": "deployPandaTokenWithBera",
+                    "Modifiers": [
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "TOKEN_SUPPLY",
+                        "wbera",
+                        "MAX_TOKENSINPOOL_SHARE",
+                        "MAX_SQRTP_MULTIPLE",
+                        "allPools",
+                        "MIN_TOKENSINPOOL_SHARE",
+                        "MIN_SQRTP_MULTIPLE",
+                        "DEPLOYER_MAX_BPS",
+                        "_NOT_ENTERED",
+                        "poolFees",
+                        "deployerNonce",
+                        "isImplementationAllowed",
+                        "minTradeSize",
+                        "minRaise",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "allPools",
+                        "deployerNonce",
+                        "_status",
+                        "poolToImplementation"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2"
+                        },
+                        {
+                            "name": "MIN_TOKENSINPOOL_SHARE",
+                            "slot": "5000"
+                        },
+                        {
+                            "name": "MAX_TOKENSINPOOL_SHARE",
+                            "slot": "9000"
+                        },
+                        {
+                            "name": "MIN_SQRTP_MULTIPLE",
+                            "slot": "11_000"
+                        },
+                        {
+                            "name": "MAX_SQRTP_MULTIPLE",
+                            "slot": "10 * 10_000"
+                        },
+                        {
+                            "name": "TOKEN_SUPPLY",
+                            "slot": "1_000_000_000 * 1e18"
+                        },
+                        {
+                            "name": "DEPLOYER_MAX_BPS",
+                            "slot": "5000"
+                        }
+                    ],
+                    "_status": 0,
+                    "poolFees": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "wbera": "0x0000000000000000000000000000000000000000",
+                    "minRaise": 0,
+                    "minTradeSize": 0,
+                    "isImplementationAllowed": false,
+                    "deployerNonce": 0,
+                    "allPools": 0
+                },
+                {
+                    "Function": "deployPandaPool",
+                    "Modifiers": [
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "MAX_TOKENSINPOOL_SHARE",
+                        "MAX_SQRTP_MULTIPLE",
+                        "allPools",
+                        "MIN_TOKENSINPOOL_SHARE",
+                        "MIN_SQRTP_MULTIPLE",
+                        "_NOT_ENTERED",
+                        "poolFees",
+                        "deployerNonce",
+                        "isImplementationAllowed",
+                        "minTradeSize",
+                        "minRaise",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "allPools",
+                        "deployerNonce",
+                        "_status",
+                        "poolToImplementation"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2"
+                        },
+                        {
+                            "name": "MIN_TOKENSINPOOL_SHARE",
+                            "slot": "5000"
+                        },
+                        {
+                            "name": "MAX_TOKENSINPOOL_SHARE",
+                            "slot": "9000"
+                        },
+                        {
+                            "name": "MIN_SQRTP_MULTIPLE",
+                            "slot": "11_000"
+                        },
+                        {
+                            "name": "MAX_SQRTP_MULTIPLE",
+                            "slot": "10 * 10_000"
+                        }
+                    ],
+                    "_status": 0,
+                    "poolFees": "0000000000000000000000000000000000000000000000000000000000000000",
+                    "minRaise": 0,
+                    "minTradeSize": 0,
+                    "isImplementationAllowed": false,
+                    "deployerNonce": 0,
+                    "allPools": 0
+                },
+                {
+                    "Function": "claimIncentive",
+                    "Modifiers": [
+                        "nonReentrant"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "_status",
+                        "_NOT_ENTERED",
+                        "poolToIncentiveClaimed",
+                        "incentiveAmount",
+                        "poolToImplementation",
+                        "incentiveToken",
+                        "_ENTERED"
+                    ],
+                    "state_variables_written": [
+                        "poolToIncentiveClaimed",
+                        "_status"
+                    ],
+                    "immutables_and_constants": [
+                        {
+                            "name": "_NOT_ENTERED",
+                            "slot": "1"
+                        },
+                        {
+                            "name": "_ENTERED",
+                            "slot": "2"
+                        }
+                    ],
+                    "_status": 0,
+                    "incentiveToken": "0x0000000000000000000000000000000000000000",
+                    "incentiveAmount": 0,
+                    "poolToIncentiveClaimed": false,
+                    "poolToImplementation": 0
+                },
+                {
+                    "Function": "setMinRaise",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "minRaise"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setMinTradeSize",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "minTradeSize"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setTreasury",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "treasury"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setDexFactory",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "initCodeHash",
+                        "dexFactory"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setAllowedImplementation",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "allowedImplementations",
+                        "msg.sender",
+                        "isImplementationAllowed",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "allowedImplementations",
+                        "isImplementationAllowed"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000",
+                    "isImplementationAllowed": false,
+                    "allowedImplementations": 0
+                },
+                {
+                    "Function": "setWbera",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "wbera"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setIncentive",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "incentiveAmount",
+                        "incentiveToken"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                    "Function": "setPandaPoolFees",
+                    "Modifiers": [
+                        "onlyOwner"
+                    ],
+                    "msg.sender_conditions": [],
+                    "state_variables_read": [
+                        "msg.sender",
+                        "_owner"
+                    ],
+                    "state_variables_written": [
+                        "poolFees"
+                    ],
+                    "_owner": "0x0000000000000000000000000000000000000000"
+                }
+            ]
+        },
+        "storage_values": {
+            "_owner": "0x0000000000000000000000000000000000000000",
+            "_status": 0,
+            "poolFees": "0000000000000000000000000000000000000000000000000000000000000000",
+            "wbera": "0x0000000000000000000000000000000000000000",
+            "minRaise": 0,
+            "minTradeSize": 0,
+            "isImplementationAllowed": false,
+            "allowedImplementations": 0,
+            "incentiveToken": "0x0000000000000000000000000000000000000000",
+            "incentiveAmount": 0,
+            "poolToIncentiveClaimed": false,
+            "deployerNonce": 0,
+            "allPools": 0,
+            "poolToImplementation": 0
+        }
+    }
+}
